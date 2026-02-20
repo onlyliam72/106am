@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>1:06 AM 💗</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #3b0a1a, #7a1f3d);
+  color: #ffd6e8;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.section {
+  display: none;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.active {
+  display: block;
+  animation: fade 1.5s ease-in-out;
+}
+
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+button {
+  background-color: #ff4f81;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 0 15px #ff7aa5;
+}
+
+button:hover {
+  background-color: #ff2f6d;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+.counter {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(0);}
+  100% {transform: translateY(-110vh);}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_946b6d8d9f.mp3" type="audio/mpeg">
+</audio>
+
+<div id="page1" class="section active">
+  <h1>1:06 AM 🕰️</h1>
+  <p>The night you became mine, babe 💗</p>
+  <p>November 23, 2025 ✨</p>
+  <button onclick="start()">Press this, bae 🫶</button>
+</div>
+
+<div id="page2" class="section">
+  <h1>Three Months With You 💞</h1>
+  <p>
+  Three months ago at exactly 1:06 AM,<br>
+  I didn’t js start dating you…<br>
+  I found my babe.<br><br>
+
+  I found my bae.<br><br>
+
+  And I didn’t know someone miles away<br>
+  could feel this close to my heart 🌙<br><br>
+
+  Long distance isn’t easy.<br>
+  The late nights, missing you,<br>
+  wishing you were here instead of on a screen…<br>
+  it’s hard sometimes.<br><br>
+
+  But loving you?<br>
+  Choosing you?<br>
+  That’s the easiest thing I’ve ever done 💗<br><br>
+
+  Every day since November 23,<br>
+  I wake up grateful that 1:06 AM happened.<br><br>
+
+  If I could go back to that exact minute,<br>
+  I’d still choose you.<br>
+  Over and over.<br><br>
+
+  Three months down…<br>
+  And I still get butterflies when you text me 🫶<br><br>
+
+  I don’t js want months with you.<br>
+  I want memories.<br>
+  I want growth.<br>
+  I want forever energy ✨<br><br>
+
+  I’m still here.<br>
+  Still choosing you.<br>
+  Still loving you.<br><br>
+
+  Always 💗
+  </p>
+
+  <button onclick="nextPage()">See how long it’s been ⏳</button>
+</div>
+
+<div id="page3" class="section">
+  <h1>It’s been... 💌</h1>
+  <div class="counter" id="counter"></div>
+  <button onclick="finalPage()">Forever with you? 💞</button>
+</div>
+
+<div id="page4" class="section">
+  <h1>Then let’s turn 3 months<br>into something that never ends 💗</h1>
+  <button onclick="openSong()">Play our song 🌙</button>
+</div>
+
+<script>
+const startDate = new Date("November 23, 2025 01:06:00").getTime();
+
+function start() {
+  document.getElementById("music").play();
+  document.getElementById("page1").classList.remove("active");
+  document.getElementById("page2").classList.add("active");
+}
+
+function nextPage() {
+  document.getElementById("page2").classList.remove("active");
+  document.getElementById("page3").classList.add("active");
+  updateCounter();
+}
+
+function finalPage() {
+  document.getElementById("page3").classList.remove("active");
+  document.getElementById("page4").classList.add("active");
+  createHearts();
+}
+
+function updateCounter() {
+  setInterval(function() {
+    const now = new Date().getTime();
+    const diff = now - startDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("counter").innerHTML =
+      days + " days 💗 " + hours + " hours 🫶 " +
+      minutes + " minutes 🌙 " + seconds + " seconds ✨";
+  }, 1000);
+}
+
+function createHearts() {
+  setInterval(function() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }, 500);
+}
+
+function openSong() {
+  window.open("https://open.spotify.com/search/fade%20into%20you");
+}
+</script>
+
+</body>
+    </html>
